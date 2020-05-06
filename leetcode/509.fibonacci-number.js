@@ -33,6 +33,16 @@ F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/fibonacci-number
 
+解题思路：缓存f(0), f(1)
+使用数组缓存 f(0) f(1) 的值，
+数组 [0, 1, 1] 分别是n = 0, 1, 2
+f(0) = 0
+f(1) = 1
+f(2) = f(1) + f(0) = 1
+f(3) = f(2) + f(1) = 2
+[f(0), f(1), f(2), f(3)]
+
+时间复杂度：O(n)
  *
 */
 // var fib = function(n) {
