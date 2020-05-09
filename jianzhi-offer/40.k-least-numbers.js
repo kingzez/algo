@@ -41,11 +41,10 @@ const getLeastNumbers = function(arr, k) {
 }
 
 function quickSort(arr, start, end) {
-  if (start < end) {
-    const pivotIndex = partition(arr, start, end)
-    quickSort(arr, start, pivotIndex - 1)
-    quickSort(arr, pivotIndex + 1, end)
-  }
+  if (start >= end) return
+  const pivotIndex = partition(arr, start, end)
+  quickSort(arr, start, pivotIndex - 1)
+  quickSort(arr, pivotIndex + 1, end)
 }
 
 function partition(arr, start, end) {
