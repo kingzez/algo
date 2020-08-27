@@ -23,6 +23,7 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
+// 迭代
 const inorderTraversal = function (root) {
   const stack = []
   const res = []
@@ -37,4 +38,22 @@ const inorderTraversal = function (root) {
     curr = curr.right
   }
   return res
+}
+
+// 递归
+const inorderTraversal = function(root) {
+  const res = []
+  traversal(root, res)
+  return res
+
+  function traversal(root, res) {
+    if (!root) return
+    if (root.left) {
+      traversal(root.left, res)
+    }
+    res.push(root.val)
+    if (root.right) {
+      traversal(root.right, res)
+    }
+  }
 }
