@@ -1,7 +1,7 @@
-// 144. 二叉树的前序遍历
-// 给定一个二叉树，返回它的 前序 遍历。
+// 145. 二叉树的后序遍历
+// 给定一个二叉树，返回它的 后序 遍历。
 
-//  示例:
+// 示例:
 
 // 输入: [1,null,2,3]
 //    1
@@ -10,7 +10,7 @@
 //     /
 //    3
 
-// 输出: [1,2,3]
+// 输出: [3,2,1]
 // 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
 
 /**
@@ -24,40 +24,40 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-// 迭代
-const preorderTraversal = function (root) {
-  const stack = []
-  const output = []
-  if (!root) return output
-  stack.push(root)
-
-  while (stack.length) {
-    const node = stack.pop()
-    output.push(node.val)
-    if (node.right) {
-      stack.push(node.right)
-    }
-    if (node.left) {
-      stack.push(node.left)
-    }
-  }
-  return output
-}
-
 // 递归
-const preorderTraversal = (root) => {
+const postorderTraversal = function (root) {
   const res = []
   traversal(root, res)
   return res
 
   function traversal(root, res) {
     if (!root) return
-    res.push(root.val)
     if (root.left) {
       traversal(root.left, res)
     }
     if (root.right) {
       traversal(root.right, res)
     }
+    res.push(root.val)
   }
+}
+
+// 迭代
+const postorderTraversal = function(root) {
+  const res = []
+  const stack = []
+  if (!root) return res
+  stack.push(root)
+
+  while (stack.length) {
+    const node = stack.pop()
+    res.unshift(node.val)
+    if (node.left) {
+      stack.push(node.left)
+    }
+    if (node.right) {
+      stack.push(node.right)
+    }
+  }
+  return res
 }
